@@ -42,6 +42,15 @@ class Student
   def self.students
     @@students
   end
+  def ==(other)
+    other.is_a?(Student) &&
+      name == other.name &&
+      surname == other.surname &&
+      dateOfBirth == other.dateOfBirth
+    # метод - дабы Minitest считал,
+    # что два студента с одинаковым именем, фамилией
+    # и датой являются эквивалентными объектами
+  end
 
 end
 
@@ -59,5 +68,5 @@ puts 'students(): ' + Student.students.to_s
 Student.remove_student(student1)
 puts 'students(): ' + Student.students.to_s
 
-student3 = Student.new('Kate', 'Aleksyuk', '2037-06-10')
-Student.add_student(student3)
+# student3 = Student.new('Kate', 'Aleksyuk', '2037-06-10')
+# Student.add_student(student3)
